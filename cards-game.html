@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="cards-game.css" />
+    <title>Cards-game</title>
+  </head>
+  <body>
+    <div>
+      <div class="left">
+        <div id="container" class="box hidden"></div>
+      </div>
+      <div class="right">
+        <div id="stats" class="hidden">
+          <p>Pairs found: <span id="pairsFound">0/8</span></p>
+          <p>Time: <span id="timer">00:00:00</span></p>
+        </div>
+        <img src="./assets/Octopus.png" id="octopus" class="hidden" />
+      </div>
+    </div>
+
+    <button id="pressToStart" class="startButton">Play</button>
+
+    <template id="template">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="./assets/cover.jpg"/>
+          </div>
+          <div class="flip-card-back">
+            <img />
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <script src="cards-game.js"></script>
+  </body>
+</html>
