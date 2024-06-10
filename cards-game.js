@@ -103,6 +103,9 @@ function shuffle(array) {
 
 const container = document.querySelector("#container");
 const template = document.querySelector("#template");
+const timerElement = document.querySelector("#timer");
+const pairsFoundElement = document.querySelector("#pairsFound");
+
 let firstCard = null;
 let pairsFound = 0;
 
@@ -112,15 +115,13 @@ let minutes = 0;
 let hours = 0;
 let timer;
 
-// New initializeGame function added
 function initializeGame() {
-  shuffle(cards); // Shuffle the cards
+  shuffle(cards);
 
   cards.forEach(function (card) {
     const cardHolder = document.importNode(template.content, true);
     const flipCard = cardHolder.querySelector(".flip-card");
     cardHolder.querySelector(".flip-card-back img").src = card.image;
-    // cardHolder.classList.add("card");
 
     flipCard.addEventListener("click", function () {
       if (flipCard.classList.contains("click")) {
@@ -172,16 +173,17 @@ function updateTimer() {
     hours++;
   }
 
-  document.getElementById('timer').textContent = 
-    `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+  timerElement.textContent = `${pad(hours)}:${pad(
+    minutes
+  )}:${pad(seconds)}`;
 }
 function pad(value) {
-  return value.toString().padStart(2, '0');
+  return value.toString().padStart(2, "0");
 }
 function updatePairsFound() {
   pairsFound++;
-  document.querySelector('#pairsFound').textContent = `${pairsFound}/${totalPairs}`;
-  if (pairsFound == cards.length / 2 ) {
+  pairsFoundElement.textContent = `${pairsFound}/${totalPairs}`;
+  if (pairsFound == cards.length / 2) {
     clearInterval(timer);
   }
 }
@@ -189,14 +191,11 @@ function updatePairsFound() {
 const button = document.querySelector("#pressToStart");
 const stats = document.querySelector("#stats");
 const octopus = document.querySelector("#octopus");
-button.onclick = function () {
+button.addEventListener("click", function() {
   button.classList.add("hidden");
   stats.classList.remove("hidden");
   container.classList.remove("hidden");
   octopus.classList.remove("hidden");
-  initializeGame(); // Call initializeGame when button is clicked
+  initializeGame();
   startTimer();
-};
-
-// что еще дбавить
-// что джальше разработать
+});
